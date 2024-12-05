@@ -1,5 +1,4 @@
 import matplotlib.pyplot as plt
-import numpy as np
 
 # Create data
 categories = ['A', 'B', 'C', 'D']
