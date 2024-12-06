@@ -15,7 +15,7 @@ ax.bar(x_labels, y_values, color=plt.cm.viridis(range(len(x_labels))))
 
 ax.set_yscale('log')
 """Set y-axis to log scale with explicit limits to show the small differences.
-By default, matplotlib tries to set "nice" axis limits that round to nearby numbers.
+Hypothesis: By default, matplotlib tries to set "nice" axis limits that round to nearby numbers.
 With log scale and very small differences (here only ~0.0012% relative difference),
 the default limits end up making the bars invisible.
 Setting explicit tight limits forces matplotlib to show the full range of the data"""
