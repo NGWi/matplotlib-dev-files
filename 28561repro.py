@@ -10,8 +10,8 @@ fig, ax = plt.subplots(figsize=(10, 6))
 ax.bar(x_labels, y_values, color=plt.cm.viridis(range(len(x_labels))))
 
 # Set y-axis to log scale
+ax.set_ylim(min(y_values), max(y_values)) # Fix for issue
 ax.set_yscale('log')
-ax.set_ylim(min(y_values) * 0.9999, max(y_values) * 1.0001)
 
 # Add title and labels
 ax.set_title("Contracts vs. Values (Log Scale)")
