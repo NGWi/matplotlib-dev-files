@@ -39,10 +39,10 @@ for i, config in enumerate(configs):
     
     # Create data
     base = 4.385
-    offset = 0.1
+    offset = 0.1  # Add small offset to raise all values
     diff = config['diff']
-    values = [base + offset + i*base*diff for i in range(1, 6)]  # Start from 1 instead of 0
-    labels = [f"Val {i}" for i in range(1, 6)]
+    values = [base + offset + i*base*diff for i in range(5)]
+    labels = [f"Val {i+1}" for i in range(5)]
     
     # Calculate relative range
     rel_range = (max(values) - min(values)) / np.mean(values) * 100
@@ -51,10 +51,8 @@ for i, config in enumerate(configs):
     ax.bar(labels, values, color=plt.cm.viridis(np.linspace(0, 1, 5)))
     ax.set_yscale('log')
     
-    # Always set a minimum y-limit slightly below the minimum value
-    min_y = min(values) * 0.99  # 1% below minimum
-    max_y = max(values) * 1.01  # 1% above maximum
-    ax.set_ylim(min_y, max_y)
+    if config['ylim']:
+        ax.set_ylim(min(values), max(values))
     
     # Set title and analyze
     title = (f"Test {i+1}: {diff*100:.4f}% diff, {config['width']}x{config['height']}, "
